@@ -81,3 +81,36 @@ visualization feature.
 - **Socratic Mode**: OFF
 - **Changes Made**: Cleaned up main.py with constants, reduced duplication via helper function for max scaling, improved empty-input validation and delay handling messages, and updated README.md to document visualization mode and runtime behavior.
 - **Context and Reasons for Changes**: User requested code cleanup and documentation refresh to better reflect current implementation and usage.
+### **New Interaction**
+- **Agent Version**: 2.2
+- **Date**: 27-03-2026 12:21
+- **User**: arkar.thurein@epita.fr
+- **Prompt**: Can you implement a Pygame based visualization?
+- **CoPilot Mode**: Edit
+- **CoPilot Model**: GPT-5.3-Codex
+- **Socratic Mode**: OFF
+- **Changes Made**: Added pygame_visualizer.py with a full 2D Bubble Sort renderer and controls, integrated mode selection in main.py, installed pygame dependency, and updated README.md documentation.
+- **Context and Reasons for Changes**: User requested a real 2D graphics rendering approach for Bubble Sort visualization.
+### **New Interaction**
+- **Agent Version**: 2.2
+- **Date**: 27-03-2026 12:23
+- **User**: arkar.thurein@epita.fr
+- **Prompt**: Can you install PyGame in the local virtual environment and then create a 'requirements.txt'
+that includes the required libraries to run this project, and finally update README to explain all
+of this?
+- **CoPilot Mode**: Edit
+- **CoPilot Model**: GPT-5.3-Codex
+- **Socratic Mode**: OFF
+- **Changes Made**: Installed pygame and pytest in the local virtual environment, added requirements.txt with project dependencies, and updated README.md with virtual environment setup and pip install -r requirements.txt workflow.
+- **Context and Reasons for Changes**: User requested dependency installation plus reproducible setup documentation.
+### **New Interaction**
+- **Agent Version**: 2.2
+- **Date**: 27-03-2026 12:28
+- **User**: arkar.thurein@epita.fr
+- **Prompt**: "main.py is too big and looks messy. Can you refactor the project and enforce the separation
+of concerns between UI and Logic? Use several files if needed.
+- **CoPilot Mode**: Edit
+- **CoPilot Model**: GPT-5.3-Codex
+- **Socratic Mode**: OFF
+- **Changes Made**: Refactored project into separate modules for logic and UI by adding sorting_logic.py and terminal_visualizer.py, slimming main.py to an orchestrator, updating pygame_visualizer.py to consume shared logic steps, and updating tests and README accordingly.
+- **Context and Reasons for Changes**: User requested stronger separation of concerns and cleaner project structure.

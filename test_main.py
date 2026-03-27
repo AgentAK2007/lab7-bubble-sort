@@ -1,6 +1,6 @@
 import pytest
 
-from main import bubble_sort, parse_numbers, swap_if_needed
+from sorting_logic import bubble_sort, parse_numbers, swap_if_needed
 
 
 def test_parse_numbers_valid_csv_input() -> None:

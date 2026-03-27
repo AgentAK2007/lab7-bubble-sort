@@ -1,6 +1,8 @@
 # Bubble Sort Practice App
 
-A Python console app to learn Bubble Sort with optional in-place terminal animation.
+A Python app to learn Bubble Sort with two visualization modes:
+- terminal ASCII animation
+- Pygame 2D graphics animation
 
 ## What This Project Does
 
@@ -8,20 +10,45 @@ A Python console app to learn Bubble Sort with optional in-place terminal animat
 - Sorts numbers in ascending order using Bubble Sort.
 - Uses an early-stop optimization when the list is already sorted.
 - Supports in-place ASCII bar animation during sorting.
+- Supports Pygame-based 2D bar animation during sorting.
 - Shows every comparison step in visualization mode (not only swaps).
 - Includes a basic pytest test suite with 5 tests.
 
 ## Files
 
-- main.py: Application logic and terminal visualization
-- test_main.py: Pytest test cases
+- main.py: Thin application entry point and mode selection
+- sorting_logic.py: Core sorting/parsing logic and visualization step generation
+- terminal_visualizer.py: Terminal ASCII rendering UI
+- pygame_visualizer.py: Pygame 2D rendering UI
+- test_main.py: Pytest tests for core logic
 - REPORT.md: Project reflection template/report notes
 - JOURNAL.md: Running log of project interactions
 
 ## Requirements
 
 - Python 3.10+
-- pytest (for tests)
+- Dependencies listed in `requirements.txt`
+
+## Setup (Local Virtual Environment)
+
+From the project folder:
+
+```bash
+python -m venv .venv
+```
+
+Activate the environment:
+
+```bash
+# Windows PowerShell
+.venv\Scripts\Activate.ps1
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
 
 ## Run The App
 
@@ -31,12 +58,20 @@ From the project folder:
 python main.py
 ```
 
-The app will ask whether to enable in-place ASCII animation.
+The app prompts for a mode:
+- `n`: no animation (plain sort)
+- `t`: terminal ASCII animation
+- `p`: Pygame 2D visualization
 
-If you choose visualization mode:
+If you choose terminal mode:
 - It redraws the frame in place for animation-like output.
 - It highlights the pair currently being compared.
 - It supports custom animation delay in seconds.
+
+If you choose Pygame mode:
+- It opens a window with animated bars.
+- It shows every comparison step.
+- It supports runtime controls.
 
 Example input:
 
@@ -53,6 +88,14 @@ Sorted result: [1, 2, 4, 5, 8]
 Sample animated frame meaning:
 - `Action: COMPARE` means the pair was checked but not swapped.
 - `Action: SWAP` means the pair was swapped.
+
+## Pygame Controls
+
+- `Space`: pause/resume
+- `Up Arrow`: faster animation
+- `Down Arrow`: slower animation
+- `R`: restart playback
+- `Esc`: close the visualization window
 
 ## Run Tests
 
@@ -80,6 +123,12 @@ python -m pytest -q
 
 - ANSI cursor control is used for in-place redraw, with fallback behavior in unsupported terminals.
 - Negative numbers are drawn with `-` bars and non-negative numbers with `#` bars.
+
+## Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
 
 ## Possible Next Improvements
 
