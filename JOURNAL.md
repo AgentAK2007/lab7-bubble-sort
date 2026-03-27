@@ -71,3 +71,13 @@ visualization feature.
 - **Socratic Mode**: OFF
 - **Changes Made**: Completed terminal visualization implementation with dynamic bar sizing from terminal width, robust clear/redraw fallback behavior, and clearer per-frame action labeling while preserving comparison-by-comparison animation.
 - **Context and Reasons for Changes**: User requested non-Socratic direct implementation and completion of in-place terminal visualization functionality.
+### **New Interaction**
+- **Agent Version**: 2.2
+- **Date**: 27-03-2026 12:16
+- **User**: arkar.thurein@epita.fr
+- **Prompt**: Can you clean up the code and update the documentation ?
+- **CoPilot Mode**: Edit
+- **CoPilot Model**: GPT-5.3-Codex
+- **Socratic Mode**: OFF
+- **Changes Made**: Cleaned up main.py with constants, reduced duplication via helper function for max scaling, improved empty-input validation and delay handling messages, and updated README.md to document visualization mode and runtime behavior.
+- **Context and Reasons for Changes**: User requested code cleanup and documentation refresh to better reflect current implementation and usage.

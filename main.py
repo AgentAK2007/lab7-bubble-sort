@@ -5,6 +5,10 @@ import shutil
 import time
 from typing import List
 
+DEFAULT_DELAY_SECONDS = 0.15
+FALLBACK_CLEAR_LINES = 80
+MIN_BAR_WIDTH = 10
+
 
 def clear_and_home_cursor() -> None:
     """Clear terminal and move cursor to top-left for in-place redraw."""
@@ -15,28 +19,33 @@ def clear_and_home_cursor() -> None:
     if ansi_supported:
         print("\033[2J\033[H", end="", flush=True)
     else:
-        print("\n" * 80, end="", flush=True)
+        print("\n" * FALLBACK_CLEAR_LINES, end="", flush=True)
 
 
 def get_bar_width_limit() -> int:
     """Get a safe bar width based on current terminal width."""
     terminal_width = shutil.get_terminal_size(fallback=(100, 30)).columns
     # Reserve space for marker, index, value, and separators.
-    return max(10, terminal_width - 20)
+    return max(MIN_BAR_WIDTH, terminal_width - 20)
 
 
 def build_bar(value: int, max_val: int = 10, terminal_width: int = 40) -> str:
     """Return a horizontal ASCII bar for one number, scaled to fit terminal."""
     if max_val == 0:
         max_val = 1
-        
+
     # Scale width to fit terminal
     width = int(abs(value) / max_val * terminal_width)
-    width = max(1, width) # At least 1 char wide so zeros are visible
-    
+    width = max(1, width)  # At least 1 char wide so zeros are visible.
+
     # Use different characters for negative numbers
     char = "-" if value < 0 else "#"
     return char * width
+
+
+def get_max_abs_value(values: List[int]) -> int:
+    """Return max absolute value from the list, defaulting to 1."""
+    return max((abs(value) for value in values), default=1)
 
 
 def draw_frame(
@@ -51,24 +60,26 @@ def draw_frame(
     clear_and_home_cursor()
     frame_status = "SWAP" if swapped else "COMPARE"
     print("Bubble Sort In-Place Animation")
-    print(f"Pass: {pass_num + 1} | Comparison: {comparison_count} | Action: {frame_status}")
+    print(
+        f"Pass: {pass_num + 1} | Comparison: {comparison_count} | Action: {frame_status}"
+    )
     print("-" * 60)
 
     # Find max for scaling
-    max_abs_val = max([abs(x) for x in values] + [1])
+    max_abs_val = get_max_abs_value(values)
     bar_width_limit = get_bar_width_limit()
 
     for index, value in enumerate(values):
         # Marker for the two elements currently being compared
         marker = "  "
         if index == left_index:
-            marker = "->" 
+            marker = "->"
         elif index == right_index:
             marker = "<-"
 
         bar = build_bar(value, max_val=max_abs_val, terminal_width=bar_width_limit)
         print(f"{marker}[{index:02}] {value:>4} | {bar}")
-        
+
     print("-" * 60)
 
 
@@ -108,7 +119,7 @@ def bubble_sort_visual(values: List[int], frame_delay: float) -> List[int]:
     print(f"Total Passes: {passes_completed} | Total Comparisons: {comparison_count}")
     print("-" * 60)
     
-    max_abs_val = max([abs(x) for x in values] + [1])
+    max_abs_val = get_max_abs_value(values)
     bar_width_limit = get_bar_width_limit()
     for index, value in enumerate(values):
         bar = build_bar(value, max_val=max_abs_val, terminal_width=bar_width_limit)
@@ -120,6 +131,9 @@ def bubble_sort_visual(values: List[int], frame_delay: float) -> List[int]:
 
 def parse_numbers(raw_text: str) -> List[int]:
     """Convert a comma-separated string into a list of integers."""
+    if not raw_text.strip():
+        raise ValueError("Input cannot be empty")
+
     return [int(x.strip()) for x in raw_text.split(",")]
 
 
@@ -160,16 +174,18 @@ def run_app() -> None:
     visual_mode = input("Use in-place ASCII animation? (y/n): ").strip().lower()
 
     if visual_mode == "y":
-        speed_input = input("Enter animation delay in seconds (default 0.15): ").strip()
+        speed_input = input(
+            f"Enter animation delay in seconds (default {DEFAULT_DELAY_SECONDS}): "
+        ).strip()
         try:
             delay = float(speed_input)
         except ValueError:
-            delay = 0.15
+            delay = DEFAULT_DELAY_SECONDS
 
         if delay < 0:
-            print("Negative delay is not valid. Using 0.15 seconds.")
-            delay = 0.15
-            
+            print(f"Negative delay is not valid. Using {DEFAULT_DELAY_SECONDS} seconds.")
+            delay = DEFAULT_DELAY_SECONDS
+
         sorted_numbers = bubble_sort_visual(numbers, frame_delay=delay)
     else:
         sorted_numbers = bubble_sort(numbers)
