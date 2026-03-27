@@ -20,3 +20,23 @@
 - **Socratic Mode**: ON
 - **Changes Made**: Added a Bubble Sort skeleton app with stub functions, comments, and numbered TODOs in main.py.
 - **Context and Reasons for Changes**: User requested a guided learning scaffold instead of a full implementation, so the file now provides structured steps for incremental coding practice.
+### **New Interaction**
+- **Agent Version**: 2.2
+- **Date**: 27-03-2026 11:36
+- **User**: arkar.thurein@epita.fr
+- **Prompt**: Can you set up testing for this app, using basic pytest features and create 5 tests?
+- **CoPilot Mode**: Edit
+- **CoPilot Model**: GPT-5.3-Codex
+- **Socratic Mode**: ON
+- **Changes Made**: Added pytest-based test_main.py with 5 tests and installed pytest in the project virtual environment.
+- **Context and Reasons for Changes**: User requested a basic pytest setup and five tests; test execution now works and currently reports failing tests due TODO stubs remaining in main.py.
+### **New Interaction**
+- **Agent Version**: 2.2
+- **Date**: 27-03-2026 11:47
+- **User**: arkar.thurein@epita.fr
+- **Prompt**: Can you create or update README.md for this project?
+- **CoPilot Mode**: Edit
+- **CoPilot Model**: GPT-5.3-Codex
+- **Socratic Mode**: ON
+- **Changes Made**: Created README.md with project overview, file map, requirements, run instructions, test instructions, and Bubble Sort complexity notes.
+- **Context and Reasons for Changes**: User asked for a project README, so documentation was added for easier onboarding and execution.
