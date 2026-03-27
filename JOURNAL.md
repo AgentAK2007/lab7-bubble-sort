@@ -1,0 +1,12 @@
+# Project Journal - lab7-bubble-sort
+
+### **New Interaction**
+- **Agent Version**: 2.2
+- **Date**: 27-03-2026 00:00
+- **User**: default_user
+- **Prompt**: Create a local git repo for this project
+- **CoPilot Mode**: Edit
+- **CoPilot Model**: Claude Haiku 4.5
+- **Socratic Mode**: ON
+- **Changes Made**: Initialized git repository with `git init`
+- **Context and Reasons for Changes**: Project now has version control enabled. The `.github/` folder structure and journal-logger agent are in place to support comprehensive tracking of development activities.
