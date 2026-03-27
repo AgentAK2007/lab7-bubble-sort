@@ -40,3 +40,34 @@
 - **Socratic Mode**: ON
 - **Changes Made**: Created README.md with project overview, file map, requirements, run instructions, test instructions, and Bubble Sort complexity notes.
 - **Context and Reasons for Changes**: User asked for a project README, so documentation was added for easier onboarding and execution.
+### **New Interaction**
+- **Agent Version**: 2.2
+- **Date**: 27-03-2026 12:01
+- **User**: arkar.thurein@epita.fr
+- **Prompt**: I am interested in the In-place redraw option. Help me implement this. Create the stubs and todos in main.py.
+- **CoPilot Mode**: Edit
+- **CoPilot Model**: GPT-5.3-Codex
+- **Socratic Mode**: ON
+- **Changes Made**: Added in-place animation scaffolding in main.py with redraw helpers, ASCII bar rendering, comparison-by-comparison visual sort path, and TODOs for student-driven improvements.
+- **Context and Reasons for Changes**: User requested an in-place redraw terminal approach with stubs and TODO guidance rather than a fully polished visualization framework.
+### **New Interaction**
+- **Agent Version**: 2.2
+- **Date**: 27-03-2026 12:12
+- **User**: arkar.thurein@epita.fr
+- **Prompt**: Can you finish implementing the stub functions?
+- **CoPilot Mode**: Edit
+- **CoPilot Model**: GPT-5.3-Codex
+- **Socratic Mode**: ON
+- **Changes Made**: Finalized visualization implementation details in main.py by improving in-place redraw behavior, handling empty/single-element visual runs safely, validating negative delay input, and polishing summary output.
+- **Context and Reasons for Changes**: User requested completion of stubs; file logic was mostly implemented, so remaining stub-level rough edges were completed for reliability and smoother animation behavior.
+### **New Interaction**
+- **Agent Version**: 2.2
+- **Date**: 27-03-2026 12:14
+- **User**: arkar.thurein@epita.fr
+- **Prompt**: Turn Socratic mode off for this request, and do finish implementing the terminal
+visualization feature.
+- **CoPilot Mode**: Edit
+- **CoPilot Model**: GPT-5.3-Codex
+- **Socratic Mode**: OFF
+- **Changes Made**: Completed terminal visualization implementation with dynamic bar sizing from terminal width, robust clear/redraw fallback behavior, and clearer per-frame action labeling while preserving comparison-by-comparison animation.
+- **Context and Reasons for Changes**: User requested non-Socratic direct implementation and completion of in-place terminal visualization functionality.
